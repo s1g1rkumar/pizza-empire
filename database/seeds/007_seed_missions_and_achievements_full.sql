@@ -1,0 +1,73 @@
+-- Seed 007: Complete 32 Missions (including Daily Missions) & 24 Achievements
+SET NAMES utf8mb4;
+SET time_zone = '+00:00';
+
+INSERT INTO missions (code, title, mission_type, target_metric, target_value, reward_cash, reward_xp, reward_gems, unlock_level_number, is_mvp) VALUES
+('MIS_FIRST_HARVEST', 'First Harvest', 'ONBOARDING', 'TOTAL_CROPS_HARVESTED', 10, 150.00, 50, 1, 1, 1),
+('MIS_BREADBASKET', 'Breadbasket', 'ONBOARDING', 'TOTAL_CROPS_HARVESTED', 25, 250.00, 80, 1, 1, 1),
+('MIS_MARKET_DAY', 'Market Day', 'ONBOARDING', 'CASH_BALANCE', 750, 300.00, 100, 1, 1, 1),
+('MIS_HELPING_HANDS', 'Helping Hands', 'ONBOARDING', 'ACTIVE_EMPLOYEES', 1, 400.00, 120, 1, 1, 1),
+('MIS_EXPAND_ACRE', 'Expand the Acre', 'FARMING', 'UNLOCKED_PLOTS', 3, 500.00, 150, 2, 1, 1),
+('MIS_CROP_50', 'Bumper Crop', 'FARMING', 'TOTAL_CROPS_HARVESTED', 50, 600.00, 200, 2, 1, 1),
+('MIS_CROP_150', 'Valley Harvester', 'FARMING', 'TOTAL_CROPS_HARVESTED', 150, 1200.00, 300, 2, 1, 1),
+('MIS_CROP_500', 'Agrarian Master', 'FARMING', 'TOTAL_CROPS_HARVESTED', 500, 3000.00, 500, 3, 1, 1),
+('MIS_HYDRATION', 'Hydration Station', 'FARMING', 'FARM_UPGRADES', 1, 800.00, 250, 2, 1, 1),
+('MIS_GRAND_OPENING', 'Grand Opening', 'RESTAURANT', 'RESTAURANTS_OWNED', 1, 1500.00, 400, 5, 2, 1),
+('MIS_FIRST_SLICE_SOLD', 'First Pizzas Sold', 'RESTAURANT', 'TOTAL_PIZZAS_SOLD', 10, 800.00, 250, 2, 2, 1),
+('MIS_MARGHERITA_RUSH', 'Margherita Rush', 'RESTAURANT', 'TOTAL_PIZZAS_SOLD', 50, 1500.00, 400, 3, 2, 1),
+('MIS_KITCHEN_CREW', 'Kitchen Crew', 'RESTAURANT', 'ACTIVE_EMPLOYEES', 3, 1800.00, 450, 3, 2, 1),
+('MIS_PIZZA_200', 'Local Favorite', 'RESTAURANT', 'TOTAL_PIZZAS_SOLD', 200, 3500.00, 700, 4, 2, 1),
+('MIS_PIZZA_500', 'Oven Maestro', 'RESTAURANT', 'TOTAL_PIZZAS_SOLD', 500, 7500.00, 1000, 5, 2, 1),
+('MIS_FACTORY_FLOOR', 'Factory Floor', 'FACTORY', 'TOTAL_BATCHES_PROCESSED', 1, 5000.00, 1000, 5, 3, 1),
+('MIS_MASS_PROD', 'Mass Production', 'FACTORY', 'TOTAL_BATCHES_PROCESSED', 50, 6500.00, 1200, 5, 3, 1),
+('MIS_BATCH_250', 'Industrial Scale', 'FACTORY', 'TOTAL_BATCHES_PROCESSED', 250, 12000.00, 2000, 6, 3, 1),
+('MIS_WORKFORCE_10', 'Growing Company', 'WORKFORCE', 'ACTIVE_EMPLOYEES', 10, 4000.00, 900, 4, 2, 1),
+('MIS_WORKFORCE_25', 'Mid-Size Team', 'WORKFORCE', 'ACTIVE_EMPLOYEES', 25, 10000.00, 1800, 6, 3, 1),
+('MIS_WORKFORCE_50', 'Enterprise Staff', 'WORKFORCE', 'ACTIVE_EMPLOYEES', 50, 25000.00, 3500, 10, 4, 1),
+('MIS_ON_WHEELS', 'On Wheels', 'DELIVERY', 'TOTAL_DELIVERIES_COMPLETED', 10, 8000.00, 1500, 5, 4, 1),
+('MIS_DOORSTEP', 'Doorstep Service', 'DELIVERY', 'TOTAL_DELIVERIES_COMPLETED', 100, 15000.00, 2500, 8, 4, 1),
+('MIS_NET_10K', 'Startup Capital', 'FINANCE', 'NET_WORTH', 10000, 2500.00, 600, 3, 2, 1),
+('MIS_NET_100K', 'Six-Figure Empire', 'FINANCE', 'NET_WORTH', 100000, 15000.00, 3000, 10, 4, 1),
+('MIS_BRANCHING_OUT', 'Branching Out', 'EXPANSION', 'RESTAURANTS_OWNED', 2, 50000.00, 4000, 15, 5, 0),
+('MIS_CHAIN_5', 'Regional Chain', 'EXPANSION', 'RESTAURANTS_OWNED', 5, 150000.00, 8000, 25, 5, 0),
+('MIS_NET_1M', 'Millionaire Mogul', 'FINANCE', 'NET_WORTH', 1000000, 100000.00, 15000, 30, 6, 0),
+('MIS_DAILY_HARVEST', 'Daily: Fresh Harvest', 'DAILY', 'TOTAL_CROPS_HARVESTED', 20, 500.00, 150, 1, 1, 1),
+('MIS_DAILY_BAKE', 'Daily: Pizza Rush', 'DAILY', 'TOTAL_PIZZAS_SOLD', 15, 1200.00, 300, 2, 1, 1),
+('MIS_DAILY_TRAIN', 'Daily: Team Builder', 'DAILY', 'ACTIVE_EMPLOYEES', 2, 800.00, 200, 1, 1, 1),
+('MIS_DAILY_CASH', 'Daily: Revenue Target', 'DAILY', 'CASH_BALANCE', 2000, 1000.00, 250, 2, 1, 1)
+ON DUPLICATE KEY UPDATE
+    title = VALUES(title),
+    target_metric = VALUES(target_metric),
+    target_value = VALUES(target_value),
+    reward_cash = VALUES(reward_cash),
+    reward_xp = VALUES(reward_xp);
+
+INSERT INTO achievements (code, name, category, target_metric, target_value, reward_cash, reward_xp, reward_gems, description) VALUES
+('ACH_GREEN_THUMB', 'Green Thumb', 'FARMING', 'TOTAL_CROPS_HARVESTED', 100, 250.00, 100, 2, 'Harvest 100 total crops.'),
+('ACH_HARVEST_1K', 'Valley Cultivator', 'FARMING', 'TOTAL_CROPS_HARVESTED', 1000, 2500.00, 500, 5, 'Harvest 1,000 total crops.'),
+('ACH_AGRARIAN_BARON', 'Agrarian Baron', 'FARMING', 'TOTAL_CROPS_HARVESTED', 25000, 15000.00, 3000, 15, 'Harvest 25,000 total crops.'),
+('ACH_MAX_PLOTS', 'Maxed Acreage', 'FARMING', 'UNLOCKED_PLOTS', 12, 5000.00, 1000, 10, 'Unlock all 12 Farm Plots.'),
+('ACH_FIRST_SLICE', 'First Slice', 'RESTAURANT', 'TOTAL_PIZZAS_SOLD', 1, 200.00, 50, 2, 'Sell your first pizza.'),
+('ACH_NEIGHBORHOOD_FAV', 'Neighborhood Favorite', 'RESTAURANT', 'TOTAL_PIZZAS_SOLD', 1000, 5000.00, 1000, 10, 'Sell 1,000 pizzas.'),
+('ACH_MASTER_PIZZAIOLO', 'Master Pizzaiolo', 'RESTAURANT', 'TOTAL_PIZZAS_SOLD', 50000, 100000.00, 10000, 25, 'Sell 50,000 pizzas.'),
+('ACH_RESTAURATEUR', 'Restaurateur', 'RESTAURANT', 'RESTAURANTS_OWNED', 1, 1000.00, 300, 3, 'Construct your first pizza restaurant.'),
+('ACH_CHAIN_MAGNATE', 'Chain Magnate', 'EXPANSION', 'RESTAURANTS_OWNED', 5, 500000.00, 20000, 40, 'Own 5 pizza restaurants.'),
+('ACH_INDUSTRIALIST', 'Industrialist', 'FACTORY', 'TOTAL_BATCHES_PROCESSED', 100, 5000.00, 1200, 8, 'Process 100 production batches.'),
+('ACH_FACTORY_TITAN', 'Factory Titan', 'FACTORY', 'TOTAL_BATCHES_PROCESSED', 5000, 25000.00, 5000, 20, 'Process 5,000 production batches.'),
+('ACH_HOT_AND_FRESH', 'Hot & Fresh', 'DELIVERY', 'TOTAL_DELIVERIES_COMPLETED', 100, 10000.00, 2000, 10, 'Complete 100 delivery orders.'),
+('ACH_SPEED_DEMON', 'Speed Demon', 'DELIVERY', 'TOTAL_DELIVERIES_COMPLETED', 1000, 50000.00, 8000, 25, 'Complete 1,000 delivery orders.'),
+('ACH_FIRST_BOSS', 'First Boss', 'WORKFORCE', 'ACTIVE_EMPLOYEES', 1, 300.00, 100, 2, 'Hire your first employee.'),
+('ACH_GROWING_TEAM', 'Growing Team', 'WORKFORCE', 'ACTIVE_EMPLOYEES', 25, 5000.00, 1000, 10, 'Employ 25 staff simultaneously.'),
+('ACH_MID_ENTERPRISE', 'Mid-Size Enterprise', 'WORKFORCE', 'ACTIVE_EMPLOYEES', 100, 50000.00, 5000, 20, 'Employ 100 staff simultaneously.'),
+('ACH_CORP_WORKFORCE', 'Corporate Workforce', 'WORKFORCE', 'ACTIVE_EMPLOYEES', 250, 250000.00, 15000, 35, 'Employ 250 staff simultaneously.'),
+('ACH_THE_500_CLUB', 'The 500 Club', 'WORKFORCE', 'ACTIVE_EMPLOYEES', 500, 2000000.00, 50000, 100, 'Employ 500/500 staff simultaneously.'),
+('ACH_SIX_FIGURES', 'Six-Figure Club', 'FINANCE', 'NET_WORTH', 100000, 5000.00, 2000, 10, 'Reach $100,000 Empire Valuation.'),
+('ACH_MILLIONAIRE', 'Millionaire', 'FINANCE', 'NET_WORTH', 1000000, 25000.00, 10000, 25, 'Reach $1,000,000 Empire Valuation.'),
+('ACH_DECAMILLIONAIRE', 'Decamillionaire', 'FINANCE', 'NET_WORTH', 10000000, 100000.00, 25000, 50, 'Reach $10,000,000 Empire Valuation.'),
+('ACH_PIZZA_EMPEROR', 'Pizza Emperor', 'ENDGAME', 'NET_WORTH', 100000000, 1000000.00, 100000, 150, 'Reach $100,000,000 Empire Valuation.'),
+('ACH_XP_10', 'Seasoned Tycoon', 'EXPANSION', 'XP_LEVEL', 10, 2000.00, 500, 5, 'Reach XP Level 10.'),
+('ACH_XP_25', 'Empire Legend', 'ENDGAME', 'XP_LEVEL', 25, 25000.00, 5000, 25, 'Reach XP Level 25.')
+ON DUPLICATE KEY UPDATE
+    name = VALUES(name),
+    target_metric = VALUES(target_metric),
+    target_value = VALUES(target_value);
